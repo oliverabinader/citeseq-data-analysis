@@ -94,8 +94,8 @@ bash /path/to/scripts/citeseq_cellranger_count.sh OUTPUT_DIR TRANSCRIPTOME FEATU
 # 📊 Output
 
 OUTPUT_DIR/
-├── Folder_C1/
-├── Folder_C2/
+- Folder_C1/
+- Folder_C2/
 ...
 
 - Each sample contains:
