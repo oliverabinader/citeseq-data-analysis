@@ -1,7 +1,6 @@
 # CITE-seq Data Analysis
 
-## Author
-Oliver Abinader
+## Author: Oliver Abinader
 
 ---
 
