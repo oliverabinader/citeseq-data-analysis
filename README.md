@@ -20,14 +20,14 @@ It generates **filtered feature-barcode matrices** for downstream single-cell an
 
 # Repository Structure
 
-├── README.md
-├── scripts/
-│ └── citeseq_cellranger_count.sh
-├── data/ # (not tracked in Git; example structure below)
-│ ├── GEX_fastqs/
-│ ├── Protein_Antibody_fastqs/
-│ ├── Library_info/
-│ └── Feature_ref.csv
+- README.md
+- scripts/
+  - citeseq_cellranger_count.sh
+- data/
+  - GEX_fastqs/
+  - Protein_Antibody_fastqs/
+  - Library_info/
+  - Feature_ref.csv
 
 
 # Input Data Structure
@@ -42,17 +42,17 @@ It generates **filtered feature-barcode matrices** for downstream single-cell an
 
 ## FASTQ files (GEX)
 GEX_fastqs/Folder_C1/
-├── Folder_C1_3_gene_06_28_24_S10_L001_R1_001.fastq.gz
-├── Folder_C1_3_gene_06_28_24_S10_L001_R2_001.fastq.gz
-├── Folder_C1_3_gene_06_28_24_S10_L002_R1_001.fastq.gz
-└── Folder_C1_3_gene_06_28_24_S10_L002_R2_001.fastq.gz
+├── Folder_C1_3_gene_S10_L001_R1_001.fastq.gz
+├── Folder_C1_3_gene_S10_L001_R2_001.fastq.gz
+├── Folder_C1_3_gene_S10_L002_R1_001.fastq.gz
+└── Folder_C1_3_gene_S10_L002_R2_001.fastq.gz
 
 ## FASTQ files (Antibody / Feature Barcode)
 Protein_Antibody_fastqs/Folder_C1/
-├── Folder_C1_F_06_28_24_S26_L001_R1_001.fastq.gz
-├── Folder_C1_F_06_28_24_S26_L001_R2_001.fastq.gz
-├── Folder_C1_F_06_28_24_S26_L002_R1_001.fastq.gz
-└── Folder_C1_F_06_28_24_S26_L002_R2_001.fastq.gz
+├── Folder_C1_F_S26_L001_R1_001.fastq.gz
+├── Folder_C1_F_S26_L001_R2_001.fastq.gz
+├── Folder_C1_F_S26_L002_R1_001.fastq.gz
+└── Folder_C1_F_S26_L002_R2_001.fastq.gz
 
 ## Library CSV example
 library_info/Folder_C1.csv
@@ -87,3 +87,16 @@ MHCII,MHCII_TotalSeqB,R2,5PNNNNNNNNNN(BC),GGTCACCAGTATGAT,Antibody Capture
   - Creates output directory
   - Runs cellranger count
   - Generates feature-barcode matrices
+
+## 📊 Output
+
+OUTPUT_DIR/
+├── Folder_C1/
+├── Folder_C2/
+...
+
+Each sample contains:
+  - filtered_feature_bc_matrix/
+  - raw_feature_bc_matrix/
+  - outs/
+  - BAM file
