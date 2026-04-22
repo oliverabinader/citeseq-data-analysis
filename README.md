@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 This repository contains a reproducible pipeline for processing **CITE-seq data** using **Cell Ranger**.
 
@@ -17,7 +17,7 @@ The workflow handles:
 It generates **filtered feature-barcode matrices** for downstream single-cell analysis (e.g., Seurat).
 
 
-# Repository Structure
+## Repository Structure
 
 - README.md
 - scripts/
@@ -29,7 +29,7 @@ It generates **filtered feature-barcode matrices** for downstream single-cell an
   - Feature_ref.csv
 
 
-# Input Data Structure
+## Input Data Structure
 
 - **Lauren_gex_fastqs/** → Gene Expression FASTQ files (GEX)
 - **Lauren_protein_antibody_fastqs/** → Antibody (CITE-seq) FASTQs  
@@ -37,23 +37,23 @@ It generates **filtered feature-barcode matrices** for downstream single-cell an
 - **Lauren_feature_ref.csv** → Feature barcode reference  
 
 
-# Example Data
+## Example Data
 
-## FASTQ files (GEX)
+### FASTQ files (GEX)
 data/GEX_fastqs/Folder_C1/
 - Folder_C1_3_gene_S10_L001_R1_001.fastq.gz
 - Folder_C1_3_gene_S10_L001_R2_001.fastq.gz
 - Folder_C1_3_gene_S10_L002_R1_001.fastq.gz
 - Folder_C1_3_gene_S10_L002_R2_001.fastq.gz
 
-## FASTQ files (Antibody / Feature Barcode)
+### FASTQ files (Antibody / Feature Barcode)
 data/Protein_Antibody_fastqs/Folder_C1/
 - Folder_C1_F_S26_L001_R1_001.fastq.gz
 - Folder_C1_F_S26_L001_R2_001.fastq.gz
 - Folder_C1_F_S26_L002_R1_001.fastq.gz
 - Folder_C1_F_S26_L002_R2_001.fastq.gz
 
-## One Library CSV example
+### One Library CSV example
 data/library_info/Folder_C1.csv
 
 ```csv
@@ -62,7 +62,7 @@ GEX_fastqs/Folder_C1,Folder_C1_3_gene,Gene Expression
 Protein_Antibody_fastqs/Folder_C1,Folder_C1_F,Antibody Capture
 ```
 
-## Feature Reference CSV example
+### Feature Reference CSV example
 data/Feature_ref.csv
 id,name,read,pattern,sequence,feature_type
 Ly6G,Ly6G_TotalSeqB,R2,5PNNNNNNNNNN(BC),ACATTGACGCAACTA,Antibody Capture
@@ -70,7 +70,7 @@ CD8a,CD8a_TotalSeqB,R2,5PNNNNNNNNNN(BC),TACCCGTAATAGCGT,Antibody Capture
 MHCII,MHCII_TotalSeqB,R2,5PNNNNNNNNNN(BC),GGTCACCAGTATGAT,Antibody Capture
 
 
-# Script
+## Script
 
 - Runs Cell Ranger count for each sample using library CSV files: scripts/citeseq_cellranger_count.sh
 - Usage:
@@ -90,7 +90,7 @@ bash /path/to/scripts/citeseq_cellranger_count.sh OUTPUT_DIR TRANSCRIPTOME FEATU
   - Generates feature-barcode matrices
 
 
-# 📊 Output
+## 📊 Output
 
 OUTPUT_DIR/
 - Folder_C1/
@@ -104,7 +104,7 @@ OUTPUT_DIR/
   - BAM file
 
 
-# ⚠️ Requirements
+## ⚠️ Requirements
 - Cell Ranger (10x Genomics)
 - Reference transcriptome (e.g., refdata-mm10-MCMV/)
   - In our case, sequencing data aligned to a custom reference containing mouse genome mm10 augmented with the MCMV viral genome.
