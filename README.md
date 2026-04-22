@@ -41,21 +41,21 @@ It generates **filtered feature-barcode matrices** for downstream single-cell an
 # Example Data
 
 ## FASTQ files (GEX)
-GEX_fastqs/Folder_C1/
-├── Folder_C1_3_gene_S10_L001_R1_001.fastq.gz
-├── Folder_C1_3_gene_S10_L001_R2_001.fastq.gz
-├── Folder_C1_3_gene_S10_L002_R1_001.fastq.gz
-└── Folder_C1_3_gene_S10_L002_R2_001.fastq.gz
+data/GEX_fastqs/Folder_C1/
+- Folder_C1_3_gene_S10_L001_R1_001.fastq.gz
+- Folder_C1_3_gene_S10_L001_R2_001.fastq.gz
+- Folder_C1_3_gene_S10_L002_R1_001.fastq.gz
+- Folder_C1_3_gene_S10_L002_R2_001.fastq.gz
 
 ## FASTQ files (Antibody / Feature Barcode)
-Protein_Antibody_fastqs/Folder_C1/
-├── Folder_C1_F_S26_L001_R1_001.fastq.gz
-├── Folder_C1_F_S26_L001_R2_001.fastq.gz
-├── Folder_C1_F_S26_L002_R1_001.fastq.gz
-└── Folder_C1_F_S26_L002_R2_001.fastq.gz
+data/Protein_Antibody_fastqs/Folder_C1/
+- Folder_C1_F_S26_L001_R1_001.fastq.gz
+- Folder_C1_F_S26_L001_R2_001.fastq.gz
+- Folder_C1_F_S26_L002_R1_001.fastq.gz
+- Folder_C1_F_S26_L002_R2_001.fastq.gz
 
-## Library CSV example
-library_info/Folder_C1.csv
+## One Library CSV example
+data/library_info/Folder_C1.csv
 
 ```csv
 fastqs,sample,library_type
@@ -63,8 +63,8 @@ GEX_fastqs/Folder_C1,Folder_C1_3_gene,Gene Expression
 Protein_Antibody_fastqs/Folder_C1,Folder_C1_F,Antibody Capture
 ```
 
-## Feature Reference example
-Feature_ref.csv
+## Feature Reference CSV example
+data/Feature_ref.csv
 id,name,read,pattern,sequence,feature_type
 Ly6G,Ly6G_TotalSeqB,R2,5PNNNNNNNNNN(BC),ACATTGACGCAACTA,Antibody Capture
 CD8a,CD8a_TotalSeqB,R2,5PNNNNNNNNNN(BC),TACCCGTAATAGCGT,Antibody Capture
@@ -73,30 +73,42 @@ MHCII,MHCII_TotalSeqB,R2,5PNNNNNNNNNN(BC),GGTCACCAGTATGAT,Antibody Capture
 
 # Script
 
-• scripts/citeseq_cellranger_count.sh: Runs Cell Ranger count for each sample using library CSV files.
-• Usage: bash scripts/citeseq_cellranger_count.sh OUTPUT_DIR TRANSCRIPTOME FEATURE_REF LIBRARY_DIR
-• Arguments:
+- Runs Cell Ranger count for each sample using library CSV files: scripts/citeseq_cellranger_count.sh
+- Usage:
+```bash
+bash /path/to/scripts/citeseq_cellranger_count.sh OUTPUT_DIR TRANSCRIPTOME FEATURE_REF LIBRARY_DIR
+```
+- Arguments:
   - OUTPUT_DIR → base directory for results
   - TRANSCRIPTOME → path to 10x reference genome
   - FEATURE_REF → feature reference CSV
   - LIBRARY_DIR → directory containing library CSV files
-
-• What the script does? For each sample:
+- What the script does? For each sample, it:
   - Reads library CSV
   - Extracts sample ID
   - Creates output directory
   - Runs cellranger count
   - Generates feature-barcode matrices
 
-## 📊 Output
+
+# 📊 Output
 
 OUTPUT_DIR/
 ├── Folder_C1/
 ├── Folder_C2/
 ...
 
-Each sample contains:
+- Each sample contains:
   - filtered_feature_bc_matrix/
   - raw_feature_bc_matrix/
   - outs/
   - BAM file
+
+
+# ⚠️ Requirements
+- Cell Ranger (10x Genomics)
+- Reference transcriptome (e.g., refdata-mm10-MCMV/)
+  - In our case, sequencing data aligned to a custom reference containing mouse genome mm10 augmented with the MCMV viral genome.
+- Feature reference CSV
+- Linux / HPC environment
+- Rstudio
