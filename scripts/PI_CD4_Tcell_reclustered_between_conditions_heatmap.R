@@ -36,7 +36,7 @@ library(circlize)
 ## Load Seurat object (post-WNN recommended)
 ############################################################
 
-lung_obj <- readRDS("/path/to/lung.integrated.after_wnn.rds")  ??change object name
+lung_obj <- readRDS("/path/to/lung.integrated.after_wnn.rds") 
 
 ############################################################
 ## Load PI-provided barcode annotation file
@@ -79,7 +79,7 @@ lung_subset@meta.data$PI_cluster <- barcode_metadata[[cluster_column]][
 
 DefaultAssay(lung_subset) <- "SCTintegrated"
 
-exp_matrix <- as.matrix(lung_subset[["SCTintegrated"]]$data) #if you encounter an error, you may need to read this as a dataframe.
+exp_matrix <- as.matrix(lung_subset[["SCTintegrated"]]$data) #if you encounter here an error, you may need to read the data in the form of a dataframe.
 meta <- lung_subset@meta.data
 
 ############################################################
